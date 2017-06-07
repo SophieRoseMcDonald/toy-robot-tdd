@@ -7,11 +7,12 @@ module ToyRobot
 
     attr_accessor :table_top, :robot
 
-    Commands = [:place, :move, :report].freeze
+    Commands = [:place, :move, :left, :report].freeze
 
     def initialize
       @table_top = TableTop.new
       @robot     = Robot.new
+
     end
 
     def place(location)
@@ -25,6 +26,16 @@ module ToyRobot
       return false unless robot_placed?
 
       table_top.place(position[:x] + route[:x], position[:y] + route[:y])
+    end
+
+    def left
+      @robot.turn :left
+      return "#{x},#{y},#{:west}".upcase if robot_placed?
+    end
+
+    def right
+      @robot.turn :right
+      return "#{x},#{y},#{:east}".upcase if robot_placed?
     end
 
     def report

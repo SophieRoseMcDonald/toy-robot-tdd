@@ -2,6 +2,8 @@ module ToyRobot
 
   class Robot
     attr_accessor :direction
+    attr_accessor :position
+
 
     Vector = {
       north: { x:  0, y:  1 },
@@ -9,6 +11,8 @@ module ToyRobot
       south: { x:  0, y: -1 },
       west:  { x: -1, y:  0 }
     }.freeze
+
+
 
     def face(direction)
       unless directions.include?(direction)
@@ -18,9 +22,15 @@ module ToyRobot
       self.direction = direction
     end
 
+    def turn(direction)
+    turn_direction direction
+    end
+
     def route
       Vector[direction]
     end
+
+
 
     private
 
@@ -32,6 +42,15 @@ module ToyRobot
       directions.index(direction)
     end
 
+    def turn_direction(direction)
+       if direction == :left
+         rotation = :west
+       elsif direction == :right
+         rotation = :east
+       else
+         raise 'invalid turn direction'
+       end
+     end
   end
 
   class InvalidDirection < RuntimeError; end

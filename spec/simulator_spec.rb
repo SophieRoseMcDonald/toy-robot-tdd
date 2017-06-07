@@ -47,6 +47,13 @@ RSpec.describe ToyRobot::Simulator do
     end
   end
 
+  describe "#right" do
+    it "robot turns to face right" do
+      simulator.place("1,1,NORTH")
+      expect(simulator.right).to eql("1,1,EAST")
+    end
+  end
+
   describe "#report" do
 
     it "prints the current position" do
