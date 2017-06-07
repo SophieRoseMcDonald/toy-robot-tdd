@@ -1,8 +1,7 @@
 module ToyRobot
 
   class Robot
-    attr_accessor :direction
-    attr_accessor :position
+    attr_accessor :direction, :position
 
 
     Vector = {
