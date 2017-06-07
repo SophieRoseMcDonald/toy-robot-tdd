@@ -40,4 +40,24 @@ RSpec.describe ToyRobot::Simulator do
 
   end
 
+  describe "#left" do
+    it "robot turns to face left" do
+      simulator.place("1,1,NORTH")
+      expect(simulator.left).to eql("1,1,WEST")
+    end
+  end
+
+  describe "#report" do
+
+    it "prints the current position" do
+      simulator.place("1,1,NORTH")
+      expect(simulator.report).to eql("1,1,NORTH")
+    end
+      context "when the robot is NOT placed" do
+
+        it "raises an exception" do
+          expect { simulator.report }.to raise_exception ToyRobot::InvalidPlacement
+        end
+      end
+  end
 end
