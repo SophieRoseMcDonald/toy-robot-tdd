@@ -7,7 +7,7 @@ module ToyRobot
 
     attr_accessor :table_top, :robot
 
-    Commands = [:place, :move, :left,:right, :report].freeze
+    Commands = [:place, :move, :left, :right, :report].freeze
 
     def initialize
       @table_top = TableTop.new
